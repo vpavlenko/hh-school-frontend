@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body > div {
+    padding: 0 5em 0 5em;
+}
+
+#control {
+    text-align: justify;
+    padding-top: 3em;
+    background-color: #f4f4f4;
+}
+
+#control button {
+    background-color: 
+}
+
+#control:after{
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 0;
+    font-size:0;
+    line-height:0;
+}
+
+#buttons {
+    display: inline-block;
+}
+
+#search {
+    display: inline-block;
+}
+
+#calendar {
+    padding-top: 1em;
+}
+
+
+.today {
+    background-color: #f4f4f4;
+}
+
+.hasEvent {
+    background-color: #c1e4ff;
+}
+
+.selected {
+    background-color: #e5f1f9;
+    border-color: #27a1ff;
+}

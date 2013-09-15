@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf8">
+    <title>Календарь в браузере</title>
+    <link rel="stylesheet" href="css/main.css">
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/moment+langs.min.js"></script>
+    <script type="text/javascript" src="js/calendar.js"></script>
+</head>
+
+<body>
+    <div id="control">
+        <div id="buttons">
+            <button id="button-add">Добавить</button>
+            <button id="button-refresh">Обновить</button>
+        </div>
+
+        <div id="search">
+            <img src="img/search.png" alt="Поиск">
+            <input type="text" placeholder="Событие, дата или участник">
+        </div>
+    </div>
+
+    <div id="calendar">
+        <div id="navigation">
+            <button id="button-prev-month">&lt;</button>
+            <span id="month"></span>
+            <button id="button-next-month">&gt;</button>
+            <button id="button-today">Сегодня</button>
+        </div>
+    </div>
+    
+</body>
+</html>
