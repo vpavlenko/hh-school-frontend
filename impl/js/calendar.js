@@ -41,7 +41,7 @@ $(document).ready(function() {
         for (var i in events) {
             events[i].date = moment(events[i].date);
         }
-        return events !== undefined;
+        return events != undefined;
     }
 
     function datesEqual(x, y) {
