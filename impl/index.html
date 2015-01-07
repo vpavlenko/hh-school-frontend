@@ -6,7 +6,7 @@
 
     <title>Календарь в браузере</title>
 
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!--<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">-->
     <link rel="stylesheet" href="css/main.css">
 
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -18,28 +18,28 @@
 </head>
 
 <body>
-    <div id="control">
-        <div id="buttons">
-            <button class="btn btn-primary" id="button-add">Добавить</button>
-            <button class="btn btn-primary" id="button-refresh">Обновить</button>
+    <header class="clearfix">
+        <div id="actions">
+            <button class="header-button" id="button-add">Добавить</button>
+            <button class="header-button" id="button-refresh">Обновить</button>
         </div>
 
-        <div id="search">
+        <div id="search-div">
             <i class="icon-large icon-search"></i>
-            <input type="text" id="search-text" placeholder="Событие, дата или участник">
+            <input type="text" id="search-input" placeholder="Событие, дата или участник">
         </div>
-    </div>
+    </header>
 
-    <div id="calendar">
-        <div id="navigation">
+    <main>
+        <nav>
             <button class="btn" id="button-prev-month">&#9666;</button>
             <span id="month"></span>
             <button class="btn" id="button-next-month">&#9656;</button>
             <button class="btn" id="button-today">Сегодня</button>
-        </div>
+        </nav>
         <div id="month-div">
         </div>
-    </div>
+    </main>
     
 
     <div id="quick-add" class="modal hide">

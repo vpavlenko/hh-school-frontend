@@ -3,62 +3,66 @@ body {
     padding: 0;
 }
 
-button {
-    vertical-align: text-bottom !important;
+header, main {
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
-body > div {
-    padding: 0 5em 0 5em;
+.header-button {
+    border: 0;
+    border-radius: 2px;
+    padding: 5px 10px;
+    box-shadow: 0 1px 1px 0 #999;
+
+    background-color: #0271c7;
+    color: white;
+    text-shadow: 0 1px 1px black;
 }
 
-#control {
-    text-align: justify;
-    padding-top: 3em;
-    background-color: #f4f4f4;
+header {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    padding-top: 50px;
+    padding-bottom: 20px;
+
+    text-align: justify;
+    background-color: #f4f4f4;
 }
 
-#control:after{
+.clearfix:after {
     content: '';
-    display: inline-block;
-    width: 100%;
-    height: 0;
-    font-size:0;
-    line-height:0;
+    clear: both;
+    display: table;
 }
 
-#buttons {
-    display: inline-block;
+#actions {
+    float: left;
 }
 
-#search {
-    display: inline-block;
+#search-div {
+    float: right;
 }
 
-#search > i {
-    -khtml-opacity: .50; 
-    -moz-opacity:.50; 
-    -ms-filter: "alpha(opacity=50)";
-    filter: alpha(opacity=50);
-    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.5);
-    opacity: .50; 
+#search-input {
+    padding: 5px 10px;
+    width: 20em;
+    border-radius: 2px;
+    border: 0;
+    box-shadow: inset 0 1px 1px 0 #999;
 }
 
-#search-text {
-    vertical-align: baseline;
+button, input {
+    font-size: 14px;
 }
 
-#calendar {
-    
+nav {
+    margin: 20px 0;
 }
 
-#navigation {
-    margin: 1em 0 1em 0;
-}
-
-#buttons > *, #navigation > * {
+#actions > *, nav > * {
     margin-right: 0.5em;
 }
+
+/* Everything is checked up to this point */
 
 #month-div > table {
     width: 100%;
