@@ -1,8 +1,11 @@
 @lightgray: #f4f4f4;
 @gray: #999;
+@darkgray: #707070;
+
+@outer-border-size: 50px;
 
 body {
-    margin: 0;
+    margin: 0 0 @outer-border-size 0;
     padding: 0;
 
     box-sizing: border-box;
@@ -11,24 +14,30 @@ body {
 }
 
 header, main {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: @outer-border-size;
+    padding-right: @outer-border-size;
 }
 
 .header-button {
+    @background-color: #0271c7;
+
     border: 0;
     border-radius: 2px;
     padding: 5px 10px;
-    box-shadow: 0 1px 1px 0 #999;
+    box-shadow: 0 1px 1px 0 @gray;
 
-    background-color: #0271c7;
+    background-color: @background-color;
     color: white;
     text-shadow: 0 1px 1px black;
+
+    &:hover {
+        background-color: lighten(@background-color, 10%);
+    }
 }
 
 header {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    padding-top: 50px;
+    padding-top: @outer-border-size;
     padding-bottom: 20px;
 
     text-align: justify;
@@ -79,77 +88,74 @@ nav > button {
 
 nav {
     margin: 20px 0;
+
+    #month {
+        display: inline-block;
+        width: 8em;
+
+        text-align: center;
+        font-family: sans-serif;
+        font-size: large;
+    }
 }
 
 #actions > *, nav > * {
     margin-right: 0.5em;
 }
 
-/* Everything is checked up to this point */
-
 #month-div > table {
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
-}
 
-#month-div > table, #month-div > table td {
-    border: 1px solid @lightgray;
-}
+    &, td {
+        border: 1px solid @lightgray;
+    }
 
-#month-div > table tr {
-    height: 6em;
-}
+    tr {
+        height: 6em;
+    }
 
-#month-div > table td {
-    vertical-align: top;
-    padding: 0.5em;
-}
+    td {
+        padding: 0.5em;
 
-.cell-title {
-    font-size: 13px;
-    color: #b8b8b8;
-}
+        vertical-align: top;
+        font-size: 13px;
+        line-height: 130%;
+        color: @darkgray;
+    }
 
-.today {
-    background-color: @lightgray;
-}
+    .cell-title {
+        color: @darkgray;
+    }
 
-.today > .cell-title {
-    font-weight: bold;
-    color: black;
-    padding-bottom: 0.3em;
-}
+    .today {
+        background-color: @lightgray;
 
-.hasEvent {
-    background-color: #c2e4ff;
-}
+        .cell-title {
+            font-weight: bold;
+        }
+    }
 
-.selected {
-    background-color: #e5f1f9;
-    border-color: #27a1ff;
-}
+    .has-event {
+        background-color: #c2e4ff;
+    }
 
-.table-event-title {
-    font-weight: bold;
-}
+    .selected {
+        background-color: #e5f1f9;
+        border-color: #27a1ff;
+    }
 
-#month {
-    display: inline-block;
-    width: 8em;
-
-    text-align: center;
-    font-family: sans-serif;
-    font-size: large;
+    .table-event-title {
+        font-weight: bold;
+    }
 }
 
 #quick-add {
     position: absolute;
     top: 45px;
 
-    /*width: 25em;*/
-    /*padding: 0;*/
-    /*border-radius: 0;*/
+    display: none;
 }
 
 .pane {
@@ -186,7 +192,7 @@ nav {
 
     text-align: center;
     font-size: 14px;
-    color: #808080;
+    color: @darkgray;
 
     &:hover {
         color: red;
@@ -195,16 +201,16 @@ nav {
     &:active {
         color: darkred;
     }
-}
 
-.pane-close-content {
-    position: absolute;
-    top: 8px;
-    right: 8px;
+    &-content {
+        position: absolute;
+        top: 8px;
+        right: 8px;
 
-    width: 14px;
-    height: 14px;
-    display: block;
+        width: 14px;
+        height: 14px;
+        display: block;
+    }
 }
 
 #quick-add-text {

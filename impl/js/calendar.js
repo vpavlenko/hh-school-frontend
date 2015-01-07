@@ -1,35 +1,37 @@
-$(document).ready(function() {
+$(function() {
     "use strict";
 
-    moment.lang("ru");
+    moment.locale("ru");
 
-    /*
-     * We assume that there's only one event per day.
-     * So the 'events' list should have only one entry per day.
-     */
+    /**
+    * We assume that there's only one event per day.
+    * So the 'events' list should have only one entry per day.
+    */
     var events = [];
 
     var currentMonth;
 
-    // called once in init(), see below
     function mockEvents() {
-        var mocks = [{title: "Митинг победителей",
-                      date: moment({year: 2013, month: 8, day: 9}),
-                      participants: "Леонид Волков, Алексей Навальный",
-                      description: "Митинг сторонников Навального на Болотной площади"
-                     },
-                     {title: "Дедлайн по вступительной в HH",
-                      date: moment({year: 2013, month: 8, day: 15}),
-                      participants: ["Виталий Павленко"],
-                      description: "Задание тут: http://school.hh.ru/#form"
-                     },
-                     {title: "Hallowe'en",
-                      date: moment({year: 2013, month: 9, day: 31}),
-                      participants: "Ghosts, vampires",
-                      description: "Может, в этом году таки отметить?"
-                     }
-                    ];
-        events = mocks;
+        events = [
+            {
+                title: "Митинг победителей",
+                date: moment({year: 2015, month: 0, day: 9}),
+                participants: "Леонид Волков, Алексей Навальный",
+                description: "Митинг сторонников Навального на Болотной площади"
+            },
+            {
+                title: "Дедлайн по вступительной в HH",
+                date: moment({year: 2015, month: 0, day: 15}),
+                participants: ["Виталий Павленко"],
+                description: "Задание тут: http://school.hh.ru/#form"
+            },
+            {
+                title: "Hallowe'en",
+                date: moment({year: 2015, month: 0, day: 31}),
+                participants: "Ghosts, vampires",
+                description: "Может, в этом году таки отметить?"
+            }
+        ];
     }
 
     function saveToLocalStorage() {
@@ -44,14 +46,10 @@ $(document).ready(function() {
         return events != undefined;
     }
 
-    function datesEqual(x, y) {
-        return x.year() == y.year() && x.month() == y.month() && x.date() == y.date();
-    }
-
     function getEventByDate(date) {
         for (var i in events) {
             var event_ = events[i];
-            if (datesEqual(event_.date, date)) {
+            if (event_.date.isSame(date, 'day')) {
                 return event_;
             }
         }
@@ -72,21 +70,21 @@ $(document).ready(function() {
         var first_week = true;
         var today = moment();
 
-        for (var date = startDate; !datesEqual(date, endDate); date.add('day', 1)) {
+        for (var date = startDate; !date.isSame(endDate, 'day'); date.add(1, 'day')) {
             if (date.day() === 1) {
                 tr = $('<tr>');
             }
 
             var title = (first_week ? (date.format('dddd') + ', ') : '') + date.format('D');
             var td = $('<td>').html($('<div class="cell-title">').text(capitalizeFirstLetter(title)));
-            if (datesEqual(date, today)) {
+            if (date.isSame(today, 'day')) {
                 td.addClass('today');
             }
 
             var currentDateEvent = getEventByDate(date);
             if (currentDateEvent !== undefined) {
                 td.append(getTableEntryByEvent(currentDateEvent));
-                td.addClass('hasEvent');
+                td.addClass('has-event');
             }
 
             tr.append(td);
@@ -105,7 +103,7 @@ $(document).ready(function() {
         $('#month').text(capitalizeFirstLetter(currentMonth.format("MMMM YYYY")));
 
         var firstDateOfMonth = currentMonth.clone().date(1);
-        var lastDateOfMonth = currentMonth.clone().add('months', 1).date(0);
+        var lastDateOfMonth = currentMonth.clone().add(1, 'months').date(0);
 
         var startDate;
         var endDate;
@@ -119,9 +117,9 @@ $(document).ready(function() {
         }
 
         if (lastDateOfMonth.day() === 0) {
-            endDate = lastDateOfMonth.clone().add('day', 1);
+            endDate = lastDateOfMonth.clone().add(1, 'day');
         } else {
-            endDate = lastDateOfMonth.clone().day(7).add('day', 1);
+            endDate = lastDateOfMonth.clone().day(7).add(1, 'day');
         }
 
         drawGrid(startDate, endDate);
@@ -141,7 +139,7 @@ $(document).ready(function() {
 
         var found = false;
         for (var i in events) {
-            if (datesEqual(events[i].date, date)) {
+            if (events[i].date.isSame(date, 'day')) {
                 events[i] = newEvent;
                 found = true;
             }
@@ -159,7 +157,7 @@ $(document).ready(function() {
     }
 
     function addQuickEvent(text) {
-        var parts = splitByComma(text);
+        var parts = text.split(',').map($.trim);
 
         if (parts.length == 0) {
             return;
@@ -186,8 +184,7 @@ $(document).ready(function() {
         }
 
         $('#button-add').click(function() {
-            $('#quick-add').modal({backdrop: false});
-            $('#quick-add-text').focus();
+            $('#quick-add').toggle();
         });
 
         $('#button-refresh').click(function() {
@@ -195,11 +192,11 @@ $(document).ready(function() {
         });
 
         $('#button-prev-month').click(function() {
-            gotoMonth(currentMonth.clone().add('month', -1));
+            gotoMonth(currentMonth.clone().add(-1, 'month'));
         });
 
         $('#button-next-month').click(function() {
-            gotoMonth(currentMonth.clone().add('month', 1));
+            gotoMonth(currentMonth.clone().add(1, 'month'));
         });
 
         $('#button-today').click(function() {
@@ -207,7 +204,7 @@ $(document).ready(function() {
         });
 
         $('#quick-add-button').click(function() {
-            $('#quick-add .close').click();
+            $('#quick-add').toggle();
             addQuickEvent($('#quick-add-text').val());
         });
 
