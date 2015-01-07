@@ -37,6 +37,7 @@ header {
 }
 
 #actions {
+    position: relative;
     float: left;
 }
 
@@ -138,7 +139,11 @@ nav {
 }
 
 #quick-add {
-    width: 25em;
-    padding: 0;
-    border-radius: 0;
+    position: absolute;
+    top: 40px;
+
+    box-shadow: 0px 1px 5px 0 red;
+    /*width: 25em;*/
+    /*padding: 0;*/
+    /*border-radius: 0;*/
 }

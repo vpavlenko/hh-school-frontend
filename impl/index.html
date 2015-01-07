@@ -5,7 +5,7 @@
     <meta charset="utf8">
 
     <title>Календарь в браузере</title>
-    
+
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
 
@@ -20,6 +20,13 @@
 <body>
     <header class="clearfix">
         <div id="actions">
+            <div id="quick-add">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <input type="text" id="quick-add-text" placeholder="5 марта, День рождения">
+                <br>
+                <button class="btn" id="quick-add-button">Добавить</button>
+            </div>
+
             <button class="header-button" id="button-add">Добавить</button>
             <button class="header-button" id="button-refresh">Обновить</button>
         </div>
@@ -40,16 +47,5 @@
         <div id="month-div">
         </div>
     </main>
-    
-
-    <div id="quick-add" class="modal hide">
-        <div class="modal-body">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <input type="text" id="quick-add-text" placeholder="5 марта, День рождения">
-            <br>
-            <button class="btn" id="quick-add-button">Добавить</button>
-        </div>
-    </div>
-
 </body>
 </html>
