@@ -18,10 +18,6 @@ body > div {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-#control button {
-    background-color: 
-}
-
 #control:after{
     content: '';
     display: inline-block;
