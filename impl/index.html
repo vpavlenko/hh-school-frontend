@@ -5,9 +5,9 @@
     <meta charset="utf8">
 
     <title>Календарь в браузере</title>
-
-    <!--<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">-->
+    
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
 
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -25,16 +25,16 @@
         </div>
 
         <div id="search-div">
-            <i class="icon-large icon-search"></i>
+            <i class="fa fa-search"></i>
             <input type="text" id="search-input" placeholder="Событие, дата или участник">
         </div>
     </header>
 
     <main>
         <nav>
-            <button class="btn" id="button-prev-month">&#9666;</button>
-            <span id="month"></span>
-            <button class="btn" id="button-next-month">&#9656;</button>
+            <button class="btn" id="button-prev-month"><i class="fa fa-caret-left"></i></button>
+            <div id="month"></div>
+            <button class="btn" id="button-next-month"><i class="fa fa-caret-right"></i></button>
             <button class="btn" id="button-today">Сегодня</button>
         </nav>
         <div id="month-div">

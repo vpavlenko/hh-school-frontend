@@ -44,6 +44,12 @@ header {
     float: right;
 }
 
+#search-div i {
+    margin-right: 5px;
+
+    color: #b0b0b0;
+}
+
 #search-input {
     padding: 5px 10px;
     width: 20em;
@@ -123,6 +129,10 @@ nav {
 }
 
 #month {
+    display: inline-block;
+    width: 8em;
+
+    text-align: center;
     font-family: sans-serif;
     font-size: large;
 }
