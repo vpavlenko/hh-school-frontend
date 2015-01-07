@@ -1,0 +1,18 @@
+{
+  "name": "hh-calendar",
+  "version": "0.0.0",
+  "dependencies": {
+    "browserify": "^8.0.3",
+    "less": "^2.2.0"
+  },
+  "devDependencies": {
+    "catw": "^0.2.0",
+    "watchify": "^2.2.1"
+  },
+  "scripts": {
+    "watch-css": "catw -c 'lessc -' 'less/*.less' -o dist/bundle.css -v",
+    "watch": "npm run watch-css",
+    "build-css": "catw -c 'lessc -' 'style/*.less' > dist/bundle.css",
+    "build": "npm run build-css"
+  }
+}
