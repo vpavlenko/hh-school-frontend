@@ -20,20 +20,23 @@
 <body>
     <header class="clearfix">
         <div id="actions">
-            <div id="quick-add">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <input type="text" id="quick-add-text" placeholder="5 марта, День рождения">
-                <br>
-                <button class="btn" id="quick-add-button">Добавить</button>
+            <div id="quick-add" class="pane">
+                <div class="pane-close">
+                    <div class="pane-close-content">
+                        <i class="fa fa-times"></i>
+                    </div>
+                </div>
+                <input type="text" id="quick-add-text" class="input-text" placeholder="5 марта, День рождения">
+                <button id="quick-add-button">Добавить</button>
             </div>
 
-            <button class="header-button" id="button-add">Добавить</button>
-            <button class="header-button" id="button-refresh">Обновить</button>
+            <button id="button-add" class="header-button" >Добавить</button>
+            <button id="button-refresh" class="header-button">Обновить</button>
         </div>
 
         <div id="search-div">
             <i class="fa fa-search"></i>
-            <input type="text" id="search-input" placeholder="Событие, дата или участник">
+            <input type="text" id="search-input" class="input-text" placeholder="Событие, дата или участник">
         </div>
     </header>
 
