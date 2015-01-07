@@ -1,6 +1,8 @@
 body {
     margin: 0;
     padding: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 header, main {
@@ -54,6 +56,15 @@ button, input {
     font-size: 14px;
 }
 
+nav > button {
+    border-radius: 2px;
+    border: 0;
+    box-shadow: inset 0px 0px 3px 0 #999;
+    padding: 2px 10px;
+
+    background-color: #fefefe;
+}
+
 nav {
     margin: 20px 0;
 }
@@ -71,11 +82,11 @@ nav {
 }
 
 #month-div > table, #month-div > table td {
-    border: 1px solid #f4f4f4;
+    border: 1px solid #f0f0f0;
 }
 
 #month-div > table tr {
-    height: 10em;
+    height: 6em;
 }
 
 #month-div > table td {
@@ -84,7 +95,8 @@ nav {
 }
 
 .cell-title {
-    color: #999999;
+    font-size: 13px;
+    color: #b8b8b8;
 }
 
 .today {
@@ -98,7 +110,7 @@ nav {
 }
 
 .hasEvent {
-    background-color: #c1e4ff;
+    background-color: #c2e4ff;
 }
 
 .selected {
