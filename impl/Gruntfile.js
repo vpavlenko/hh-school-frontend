@@ -18,10 +18,17 @@ module.exports = function(grunt) {
             },
             js: {
                 files: [
-                    'js/*.js',
-                    'Gruntfile.js'
+                    'js/*.js'
                 ],
                 tasks: ['jshint', 'concat']
+            },
+            all: {
+                options: {
+                    livereload: true
+                },
+                files: [
+                    'index.html', 'dist/*'
+                ]
             }
         },
         jshint: {
@@ -57,6 +64,14 @@ module.exports = function(grunt) {
                 ],
                 dest: 'dist/bundle.js'
             }
+        },
+        connect: {
+            server: {
+                options: {
+                    livereload: true,
+                    open: true
+                }
+            }
         }
     });
 
@@ -65,8 +80,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
     // Register the default tasks.
     grunt.registerTask('build', ['jshint', 'less', 'concat']);
-    grunt.registerTask('default', ['build', 'watch']);
+    grunt.registerTask('default', ['build', 'connect:server', 'watch']);
 };
