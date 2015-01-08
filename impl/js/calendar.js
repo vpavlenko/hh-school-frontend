@@ -79,7 +79,10 @@ $(function() {
                 title = 'Сегодня, ' + title;
             }
 
-            var td = $('<td>').html($('<div class="cell-title">').text(title));
+            var td = $('<td>')
+                .html($('<div class="cell-title">').text(title))
+                .data('date', date.clone());
+
             if (date.isSame(today, 'day')) {
                 td.addClass('today');
             }
@@ -187,7 +190,7 @@ $(function() {
             position: 'bottom'
         });
 
-        new Pane($('#event-edit'));
+        var eventEditPane = new Pane($('#event-edit'));
 
         if (!restoreFromLocalStorage()) {
             mockEvents();
@@ -219,6 +222,10 @@ $(function() {
         });
 
         $(document).on('click', '.has-event', function() {
+            eventEditPane.setOptions({
+                attachTo: $(this),
+                position: $(this).data('date').weekday() < 4 ? 'right' : 'left'
+            });
             $('#event-edit').toggle();
         });
 

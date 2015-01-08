@@ -1,13 +1,15 @@
 @import "colors.less";
 
 .pane {
-  @border-type: 1px solid lighten(@gray, 50%);
+  @border-type: 1px solid @gray;
 
   position: relative;
 
   box-shadow: 0px 1px 10px 1px @gray;
   border: @border-type;
   padding: 30px;
+  width: 200px;
+  margin-left: 100px;
 
   background-color: white;
 
@@ -23,6 +25,32 @@
 
     content: '';
     background-color: white;
+
+    transform: rotate(45deg);
+  }
+}
+
+.pane-position-left {
+  &::before {
+    right: -8px;
+    top: 20px;
+
+    transform: rotate(135deg);
+  }
+}
+
+.pane-position-right {
+  &::before {
+    left: -8px;
+    top: 20px;
+
+    transform: rotate(-45deg);
+  }
+}
+
+.pane-position-bottom {
+  &::before {
+    top: -8px;
 
     transform: rotate(45deg);
   }
