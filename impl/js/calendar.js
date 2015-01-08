@@ -48,20 +48,18 @@ $(function() {
 
     function getEventByDate(date) {
         for (var i in events) {
-            var event_ = events[i];
-            if (event_.date.isSame(date, 'day')) {
-                return event_;
+            if (events[i].date.isSame(date, 'day')) {
+                return events[i];
             }
         }
 
         return undefined;
     }
 
-    function getTableEntryByEvent(event_) {
-        var entry = $('<div class="table-event">');
-        entry.append($('<div class="table-event-title">').text(event_.title));
-        entry.append($('<div class="table-event-participants">').text(event_.participants));
-        return entry;
+    function getTableEntryByEvent(event) {
+        return $('<div class="table-event">')
+            .append($('<div class="table-event-title">').text(event.title))
+            .append($('<div class="table-event-participants">').text(event.participants));
     }
 
     function drawGrid(startDate, endDate) {
@@ -76,7 +74,7 @@ $(function() {
             }
 
             var title = (first_week ? (date.format('dddd') + ', ') : '') + date.format('D');
-            var td = $('<td>').html($('<div class="cell-title">').text(capitalizeFirstLetter(title)));
+            var td = $('<td>').html($('<div class="cell-title">').text(title));
             if (date.isSame(today, 'day')) {
                 td.addClass('today');
             }
@@ -100,7 +98,7 @@ $(function() {
     function gotoMonth(day) {
         currentMonth = day;
 
-        $('#month').text(capitalizeFirstLetter(currentMonth.format("MMMM YYYY")));
+        $('#month-title').text(currentMonth.format("MMMM YYYY"));
 
         var firstDateOfMonth = currentMonth.clone().date(1);
         var lastDateOfMonth = currentMonth.clone().add(1, 'months').date(0);
@@ -108,7 +106,7 @@ $(function() {
         var startDate;
         var endDate;
 
-        // calendar will represent dates in range [startDate; endDate)
+        // Calendar represents dates in range [startDate; endDate).
 
         if (firstDateOfMonth.day() === 0) {
             startDate = firstDateOfMonth.clone().day(-6);
