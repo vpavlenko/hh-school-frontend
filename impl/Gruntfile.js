@@ -78,6 +78,11 @@ module.exports = function(grunt) {
                     open: true
                 }
             }
+        },
+        shell: {
+            bower: {
+                command: 'bower update'
+            }
         }
     });
 
@@ -88,8 +93,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-shell');
 
     // Register the default tasks.
-    grunt.registerTask('build', ['less', 'jshint', 'concat', 'uglify']);
+    grunt.registerTask('build', ['shell:bower', 'less', 'jshint', 'concat', 'uglify']);
     grunt.registerTask('default', ['build', 'connect:server', 'watch']);
 };
