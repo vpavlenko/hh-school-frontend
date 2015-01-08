@@ -1,7 +1,9 @@
-$(function() {
-    "use strict";
+/*global $:false, moment:false */
 
-    moment.locale("ru");
+$(function() {
+    'use strict';
+
+    moment.locale('ru');
 
     /**
     * We assume that there's only one event per day.
@@ -14,22 +16,22 @@ $(function() {
     function mockEvents() {
         events = [
             {
-                title: "Митинг победителей",
+                title: 'Митинг победителей',
                 date: moment({year: 2015, month: 0, day: 9}),
-                participants: "Леонид Волков, Алексей Навальный",
-                description: "Митинг сторонников Навального на Болотной площади"
+                participants: 'Леонид Волков, Алексей Навальный',
+                description: 'Митинг сторонников Навального на Болотной площади'
             },
             {
-                title: "Дедлайн по вступительной в HH",
+                title: 'Дедлайн по вступительной в HH',
                 date: moment({year: 2015, month: 0, day: 15}),
-                participants: ["Виталий Павленко"],
-                description: "Задание тут: http://school.hh.ru/#form"
+                participants: ['Виталий Павленко'],
+                description: 'Задание тут: http://school.hh.ru/#form'
             },
             {
-                title: "Hallowe'en",
+                title: 'Hallowe\'en',
                 date: moment({year: 2015, month: 0, day: 31}),
-                participants: "Ghosts, vampires",
-                description: "Может, в этом году таки отметить?"
+                participants: 'Ghosts, vampires',
+                description: 'Может, в этом году таки отметить?'
             }
         ];
     }
@@ -43,7 +45,7 @@ $(function() {
         for (var i in events) {
             events[i].date = moment(events[i].date);
         }
-        return events != undefined;
+        return events !== undefined;
     }
 
     function getEventByDate(date) {
@@ -65,7 +67,7 @@ $(function() {
     function drawGrid(startDate, endDate) {
         var table = $('<table>');
         var tr;
-        var first_week = true;
+        var firstWeek = true;
         var today = moment();
 
         for (var date = startDate; !date.isSame(endDate, 'day'); date.add(1, 'day')) {
@@ -73,7 +75,7 @@ $(function() {
                 tr = $('<tr>');
             }
 
-            var title = (first_week ? (date.format('dddd') + ', ') : '') + date.format('D');
+            var title = (firstWeek ? (date.format('dddd') + ', ') : '') + date.format('D');
             var td = $('<td>').html($('<div class="cell-title">').text(title));
             if (date.isSame(today, 'day')) {
                 td.addClass('today');
@@ -89,7 +91,7 @@ $(function() {
 
             if (date.day() === 0) {
                 table.append(tr);
-                first_week = false;
+                firstWeek = false;
             }
         }
         $('#month-div').html(table);
@@ -98,7 +100,7 @@ $(function() {
     function gotoMonth(day) {
         currentMonth = day;
 
-        $('#month-title').text(currentMonth.format("MMMM YYYY"));
+        $('#month-title').text(currentMonth.format('MMMM YYYY'));
 
         var firstDateOfMonth = currentMonth.clone().date(1);
         var lastDateOfMonth = currentMonth.clone().add(1, 'months').date(0);
@@ -157,10 +159,10 @@ $(function() {
     function addQuickEvent(text) {
         var parts = text.split(',').map($.trim);
 
-        if (parts.length == 0) {
+        if (parts.length === 0) {
             return;
         }
-        if (parts.length == 1) {
+        if (parts.length === 1) {
             parts.push('');
         }
         if (parts.length > 2) {
