@@ -12,5 +12,10 @@
   "quotmark": "single",
   "undef": true,
   "unused": "vars",
-  "strict": true
+  "strict": true,
+  "globals": {
+    "$": false,
+    "moment": false,
+    "Pane": false
+  }
 }

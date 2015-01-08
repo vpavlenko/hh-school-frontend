@@ -16,7 +16,7 @@ module.exports = function(grunt) {
                     'js/*.js',
                     'Gruntfile.js'
                 ],
-                tasks: ['jshint']
+                tasks: ['jshint', 'concat']
             }
         },
         jshint: {
@@ -46,6 +46,16 @@ module.exports = function(grunt) {
                     'dist/bundle.min.css': 'less/main.less'
                 }
             }
+        },
+        concat: {
+            dist: {
+                src: [
+                    'bower_components/jquery/dist/jquery.min.js',
+                    'bower_components/moment/min/moment-with-locales.min.js',
+                    'js/*.js'
+                ],
+                dest: 'dist/bundle.js'
+            }
         }
     });
 
@@ -53,8 +63,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-concat');
 
     // Register the default tasks.
-    grunt.registerTask('build', ['jshint', 'less']);
+    grunt.registerTask('build', ['jshint', 'less', 'concat']);
     grunt.registerTask('default', ['build', 'watch']);
 };

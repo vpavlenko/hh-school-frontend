@@ -1,5 +1,3 @@
-/*global $:false, moment:false */
-
 $(function() {
     'use strict';
 
@@ -208,9 +206,11 @@ $(function() {
             addQuickEvent($('#quick-add-text').val());
         });
 
-        $('#quick-add .pane-close').click(function() {
-            $('#quick-add').hide();
+        $(document).on('click', '.has-event', function() {
+
         });
+
+        new Pane($('#quick-add'));
 
         gotoToday();
     }

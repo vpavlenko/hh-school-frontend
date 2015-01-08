@@ -141,7 +141,13 @@ nav {
     }
 
     .has-event {
-        background-color: #c2e4ff;
+        @background-color: #c2e4ff;
+
+        background-color: @background-color;
+
+        &:hover {
+            background-color: darken(@background-color, 5%);
+        }
     }
 
     .selected {
