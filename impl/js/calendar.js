@@ -74,6 +74,11 @@ $(function() {
             }
 
             var title = (firstWeek ? (date.format('dddd') + ', ') : '') + date.format('D');
+
+            if (date.isSame(today, 'day')) {
+                title = 'Сегодня, ' + title;
+            }
+
             var td = $('<td>').html($('<div class="cell-title">').text(title));
             if (date.isSame(today, 'day')) {
                 td.addClass('today');
@@ -177,6 +182,13 @@ $(function() {
     }
 
     function init() {
+        new Pane($('#quick-add'), {
+            attachTo: $('#button-add'),
+            position: 'bottom'
+        });
+
+        new Pane($('#event-edit'));
+
         if (!restoreFromLocalStorage()) {
             mockEvents();
         }
@@ -207,10 +219,8 @@ $(function() {
         });
 
         $(document).on('click', '.has-event', function() {
-
+            $('#event-edit').toggle();
         });
-
-        new Pane($('#quick-add'));
 
         gotoToday();
     }
