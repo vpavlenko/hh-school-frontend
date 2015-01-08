@@ -45,7 +45,7 @@ $(function() {
         for (var i in events) {
             events[i].date = moment(events[i].date);
         }
-        return events !== undefined;
+        return events !== null;
     }
 
     function getEventByDate(date) {
