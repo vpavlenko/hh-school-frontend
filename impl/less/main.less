@@ -1,6 +1,4 @@
-@lightgray: #f4f4f4;
-@gray: #999;
-@darkgray: #707070;
+@import "colors.less";
 
 @outer-border-size: 50px;
 @control-size: 14px;
@@ -165,75 +163,6 @@ nav {
     top: 45px;
 
     display: none;
-}
-
-.pane {
-    @border-type: 1px solid lighten(@gray, 50%);
-
-    position: relative;
-
-    box-shadow: 0px 1px 10px 1px @gray;
-    border: @border-type;
-    padding: 30px;
-
-    background-color: white;
-
-    &::before {
-        position: absolute;
-        top: -8px;
-
-        display: block;
-        width: 14px;
-        height: 14px;
-        border-left: @border-type;
-        border-top: @border-type;
-
-        content: '';
-        background-color: white;
-
-        transform: rotate(45deg);
-    }
-}
-
-.pane-close {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-
-    width: 30px;
-    height: 30px;
-
-    text-align: center;
-    font-size: 14px;
-    color: @darkgray;
-
-    &:active {
-        color: darkred;
-    }
-
-    &-content {
-        position: absolute;
-        top: 8px;
-        right: 8px;
-
-        width: 14px;
-        height: 14px;
-        display: block;
-        border-radius: 50%;
-    }
-
-    &:hover &-content, &:active &-content {
-        font-size: 12px;
-        color: white;
-    }
-
-    &:hover &-content {
-        background-color: hotpink;
-    }
-
-    &:active &-content {
-        background-color: darken(hotpink, 10%);
-    }
 }
 
 #quick-add-text {

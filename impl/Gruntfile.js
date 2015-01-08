@@ -1,6 +1,11 @@
 module.exports = function(grunt) {
     'use strict';
 
+    var lessSources = [
+        'less/main.less',
+        'less/pane.less'
+    ];
+
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -27,23 +32,19 @@ module.exports = function(grunt) {
         },
         less: {
             development: {
-                options: {
-                    paths: ['css']
-                },
                 files: {
-                    'dist/bundle.css': 'less/main.less'
+                    'dist/bundle.css': lessSources
                 }
             },
             production: {
                 options: {
-                    paths: ['css'],
                     plugins: [
                         new (require('less-plugin-autoprefix'))({browsers: ['last 2 versions']}),
                         new (require('less-plugin-clean-css'))()
                     ]
                 },
                 files: {
-                    'dist/bundle.min.css': 'less/main.less'
+                    'dist/bundle.min.css': lessSources
                 }
             }
         },
