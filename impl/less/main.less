@@ -1,10 +1,10 @@
 @import "colors.less";
 
-@outer-border-size: 50px;
+@outer-margin: 50px;
 @control-size: 14px;
 
 body {
-    margin: 0 0 @outer-border-size 0;
+    margin: 0 0 @outer-margin 0;
     padding: 0;
 
     box-sizing: border-box;
@@ -13,8 +13,8 @@ body {
 }
 
 header, main {
-    padding-left: @outer-border-size;
-    padding-right: @outer-border-size;
+    padding-left: @outer-margin;
+    padding-right: @outer-margin;
 }
 
 .header-button {
@@ -36,7 +36,7 @@ header, main {
 
 header {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    padding-top: @outer-border-size;
+    padding-top: @outer-margin;
     padding-bottom: 20px;
 
     text-align: justify;
