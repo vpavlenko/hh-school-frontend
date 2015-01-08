@@ -1,7 +1,4 @@
-dist
-
 # http://addyosmani.com/blog/checking-in-front-end-dependencies/
-bower_components
 node_modules
 npm-debug.log
 
