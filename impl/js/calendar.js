@@ -206,6 +206,10 @@ $(function() {
             addQuickEvent($('#quick-add-text').val());
         });
 
+        $('#quick-add .pane-close').click(function() {
+            $('#quick-add').hide();
+        });
+
         gotoToday();
     }
 
