@@ -20,7 +20,7 @@ module.exports = function(grunt) {
                 files: [
                     'js/*.js'
                 ],
-                tasks: ['jshint', 'concat']
+                tasks: ['jshint', 'concat', 'uglify']
             },
             all: {
                 options: {
@@ -65,6 +65,13 @@ module.exports = function(grunt) {
                 dest: 'dist/bundle.js'
             }
         },
+        uglify: {
+            bundle: {
+                files: {
+                    'dist/bundle.min.js': 'dist/bundle.js'
+                }
+            }
+        },
         connect: {
             server: {
                 options: {
@@ -80,8 +87,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
     // Register the default tasks.
-    grunt.registerTask('build', ['jshint', 'less', 'concat']);
+    grunt.registerTask('build', ['less', 'jshint', 'concat', 'uglify']);
     grunt.registerTask('default', ['build', 'connect:server', 'watch']);
 };
