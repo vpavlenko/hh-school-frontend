@@ -22,7 +22,15 @@ module.exports = function(grunt) {
                 ],
                 tasks: ['jshint', 'concat', 'uglify']
             },
+            jshint: {
+                files: '.jshintrc',
+                tasks: 'jshint'
+            },
             all: {
+                files: 'Gruntfile.js',
+                tasks: ['build']
+            },
+            livereload: {
                 options: {
                     livereload: true
                 },
@@ -39,6 +47,11 @@ module.exports = function(grunt) {
         },
         less: {
             development: {
+                options: {
+                    plugins: [
+                        new (require('less-plugin-autoprefix'))({browsers: ['last 2 versions']})
+                    ]
+                },
                 files: {
                     'dist/bundle.css': lessSources
                 }
