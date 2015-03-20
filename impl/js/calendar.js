@@ -40,8 +40,8 @@ $(function() {
 
     function restoreFromLocalStorage() {
         events = JSON.parse(localStorage.getItem('events'));
-        for (var i in events) {
-            events[i].date = moment(events[i].date);
+        for (var event of events) {
+            event.date = moment(event.date);
         }
         return events !== null;
     }

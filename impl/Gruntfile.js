@@ -73,9 +73,24 @@ module.exports = function(grunt) {
                 src: [
                     'bower_components/jquery/dist/jquery.min.js',
                     'bower_components/moment/min/moment-with-locales.min.js',
-                    'js/*.js'
+                    'es5/traceur/traceur_runtime.js',
+                    'es5/*.js'
                 ],
                 dest: 'dist/bundle.js'
+            }
+        },
+        traceur: {
+            options: {
+                experimental: true,
+                copyRuntime: 'es5/traceur'
+            },
+            custom: {
+                files: [{
+                    expand: true,
+                    cwd: 'js',
+                    src: ['*.js'],
+                    dest: 'es5'
+                }]
             }
         },
         uglify: {
@@ -107,8 +122,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-traceur');
 
     // Register the default tasks.
-    grunt.registerTask('build', ['shell:bower', 'less', 'jshint', 'concat', 'uglify']);
+    grunt.registerTask('build', ['shell:bower', 'less', 'jshint', 'traceur', 'concat', 'uglify']);
     grunt.registerTask('default', ['build', 'connect:server', 'watch']);
 };
